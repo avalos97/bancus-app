@@ -32,19 +32,18 @@ Descripción de la estructura de directorios de alto nivel:
 ## Configuración y Uso
 Para poner en marcha el proyecto completo, sigue estos pasos:
 
-###Clonar el Repositorio
-Primero, clona el repositorio en tu máquina local:
+### Clonar el Repositorio
 
-`git clone URL_DEL_REPOSITORIO`
+`git clone https://github.com/avalos97/bancus-app.git`
 
-`cd nombre_del_directorio_del_proyecto`
+`cd bancus-app`
 
-###Iniciar los Servicios con Docker Compose
+### Iniciar los Servicios con Docker Compose
 Una vez que tienes el proyecto en tu máquina local, puedes iniciar todos los servicios utilizando Docker Compose:
 
 `docker-compose up --build`
 
-###Acceder a los Servicios
+### Acceder a los Servicios
 Una vez que los servicios estén en ejecución, podrás acceder a ellos a través de los siguientes enlaces:
 
 - Frontend: http://localhost:4200
