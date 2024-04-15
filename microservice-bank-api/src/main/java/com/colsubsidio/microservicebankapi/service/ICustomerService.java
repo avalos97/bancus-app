@@ -7,7 +7,6 @@ import com.colsubsidio.microservicebankapi.domain.dto.CustomerDTO;
 
 public interface ICustomerService extends IBaseService<CustomerDTO, Long>{
 
-    // List<AccountDTO> getAccountsByCustomer(Long id);
     List<AccountDTO> saveAccountByCustomer(Long customerId, AccountDTO saveAccount);
     List<AccountDTO> updateAccountByCustomer(Long customerId, Long accountId, AccountDTO updateAccount);
     void deleteAccountByCustomer(Long customerId, Long accountId);

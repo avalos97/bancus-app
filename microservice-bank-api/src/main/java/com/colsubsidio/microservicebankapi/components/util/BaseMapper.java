@@ -8,8 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class BaseMapper<Entity, DTO> {
 
-    @Autowired
     protected ModelMapper modelMapper;
+
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     public DTO entityToDto(Entity entity) {
         return modelMapper.map(entity, getDtoClass());

@@ -96,10 +96,10 @@ public class MovementService extends BaseMapper<Movement, MovementDTO> implement
 
     @Override
     public List<MovementDTO> getAll() {
-        return this.entityListToDtoList(repository.findAll());
+        List<MovementDTO> list = this.entityListToDtoList(repository.findAll());
+        return list;
     }
 
-    // TODO: se debe validar que la cuenta exista
     @Override
     public List<MovementDTO> getMovementsByAccount(Long accountId) {
         accountRepository.findById(accountId)
@@ -109,7 +109,8 @@ public class MovementService extends BaseMapper<Movement, MovementDTO> implement
 
     @Override
     public List<MovementDTO> getMovementsByCriteria(Long customerId, LocalDate startDate, LocalDate endDate) {
-        return this.entityListToDtoList(repository.findAllByCustomerAndDateRange(customerId, startDate, endDate));
+        List<MovementDTO> list = this.entityListToDtoList(repository.findAllByCustomerAndDateRange(customerId, startDate, endDate));
+        return list;
     }
 
     @Override
