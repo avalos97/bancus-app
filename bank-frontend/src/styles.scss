@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  background: #fafafa;
+  color: #262626;
+  font-family: "Montserrat", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.4125rem;
+  height: 0.3125rem;
+}
+
+::-webkit-scrollbar-button {
+  background-color: transparent !important;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

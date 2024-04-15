@@ -1,0 +1,14 @@
+<!--PLANTILLA DE CARDS REUTILIZABLE-->
+
+<mat-card class="border-info dashboard-card">
+    <mat-card-header *ngIf="mostrarHeader === 'true'" [style.height]="heigthHeader">
+        <mat-card-title>
+            {{title}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content [style.overflow]="isOverflow" class="dashboard-card-content">
+        <ng-content></ng-content>
+    </mat-card-content>
+    <mat-card-footer *ngIf="heigthFoot" [style.height]="heigthFoot">
+    </mat-card-footer>
+</mat-card>

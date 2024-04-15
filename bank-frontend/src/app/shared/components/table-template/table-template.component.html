@@ -1,0 +1,38 @@
+<div class="contenedor-lista">
+    <app-card-template [mostrarHeader]="'true'" [title]="title" [isOverflow]="'hidden'" [heigthHeader]="'50px'">
+        <div class="d-flex justify-content-between align-items-end">
+            <button class="btn-add m-2" type="button" *ngIf="showCreate" mat-button (click)="create()">Agregar registro</button>
+        </div>
+        <div class="mat-elevation-z8 mt-3">
+            <div class="table-container">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" aria-describedby="table-template">
+                
+                    <ng-container *ngFor="let column of tableColumns">
+                        <ng-container [matColumnDef]="column.name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </th>
+                            <td mat-cell *matCellDef="let row"> {{row[column.name]}} </td>
+                        </ng-container>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCIONES </th>
+                        <td mat-cell *matCellDef="let row">
+                            <button *ngIf="showUpdate" class="text-warning" style="font-size: 30px; cursor: pointer;" mat-icon-button (click)="edit(row)">
+                                <i class="uil uil-edit"></i>
+                                <i class="uil uil-minus"></i>
+                            </button>
+                            <button class="text-danger" style="font-size: 30px; cursor: pointer;" mat-icon-button
+                                (click)="deleteRegister(row)">
+                                <i class="uil uil-trash"></i>
+                            </button>
+                        </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+    </app-card-template>
+</div>

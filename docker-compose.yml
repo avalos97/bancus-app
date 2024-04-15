@@ -1,0 +1,58 @@
+version: '3'
+services:
+
+  # Databases Service 
+  db-bank:
+    container_name: db-bank
+    image: postgres:13.3-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: db-bank
+      POSTGRES_PASSWORD: 12345
+    volumes:
+      - bank_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - net-db
+    
+  #Microservices
+  bank-microservice:
+    container_name: bank-microservice
+    build:
+      context: microservice-bank-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - net-db
+      - net-client
+    depends_on:
+      - db-bank
+
+  #Frontend Service 
+  app-client:
+    container_name: app-client
+    build:
+      context: bank-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    volumes:
+      - volumen_nginx:/home/nginx
+    networks:
+      - net-client
+    depends_on:
+      - bank-microservice
+
+#Networks to be created to facilitate communication between containers
+
+networks:
+  net-db:
+  net-client:
+
+volumes:
+  volumen_nginx:
+  bank_data:

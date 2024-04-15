@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  # Databases Service 
+  db-bank:
+    container_name: db-bank
+    image: postgres:13.3-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: db-bank
+      POSTGRES_PASSWORD: 12345
+    volumes:
+      - bank_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  bank_data: 

@@ -1,0 +1,37 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <form [formGroup]="form" (submit)="getMovementsByCriteria()">
+            <mat-form-field appearance="outline" class="m-2">
+                <mat-label>Cliente</mat-label>
+                <mat-select formControlName="customer">
+                    <mat-option *ngFor="let item of customers" [value]="item">
+                        {{item.name}}
+                      </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['customer'].hasError('required')">
+                    Campo obligatorio
+                  </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="m-2">
+                <mat-label>Rango de fechas</mat-label>
+                <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+                    <input formControlName="startDate" matStartDate placeholder="Fecha inicio" (focus)="picker.open()" readonly>
+                    <input formControlName="endDate" matEndDate placeholder="Fecha fin" (focus)="picker.open()" readonly>
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+                <mat-error *ngIf="form.controls['startDate'].hasError('required')">
+                    Campo obligatorio
+                  </mat-error>
+            </mat-form-field>
+            <button type="submit" class="btn-add m-2" mat-button>Aplicar filtros</button>
+            <button type="button" class="btn-quit m-2" mat-button (click)="clearForm()">Limpiar</button>
+        </form>
+    </div>
+    <div>
+
+        <app-table-template [title]="title" [tableColumns]="columns"
+            [tableData]="movement" [showUpdate]="false" [showCreate]="false" [deleteRegister]="deleteWrapper"></app-table-template>
+    </div>
+</div>

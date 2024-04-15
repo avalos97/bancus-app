@@ -1,0 +1,19 @@
+
+
+<div class="grid-wrapper m-3" *ngIf="customerId">
+    <button mat-raised-button color="primary" class="m-3" (click)="openDialog()">AGREGAR CUENTA</button>
+    <button mat-raised-button color="accent" class="m-3" *ngIf="customerAccounts.length > 0" (click)="openDialogMovements()" >REALIZAR MOVIMIENTO</button>
+    <mat-divider></mat-divider>
+    <div class="grid-container m-2">
+        <div *ngFor="let account of customerAccounts" class="accound-card">
+            <div class="accound-info">
+                <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+                <div>
+                    <div class="balance-account">Balance: {{ account.balance | currency}}</div>
+                    <mat-hint>Cuenta: {{ account.number }}</mat-hint>
+                </div>
+            </div>
+            <button class="btn-add" mat-raised-button (click)="openDialog(account)">MODIFICAR</button>
+            <button class="btn-quit" mat-raised-button (click)="deleteAccount(account.accountId)"><mat-icon>close</mat-icon>ELIMINAR</button>
+        </div>
+    </div>

@@ -1,0 +1,49 @@
+<app-card-template title="Registro de Clientes" mostrarHeader="true" heigthHeader="50px" isOverflow="auto">
+    <form [formGroup]="form" (ngSubmit)="accept()" autocomplete="off">
+        <div class="m-3">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="clas-form-field w-100" appearance="outline">
+                        <mat-label for="name">Nombre del Cliente: </mat-label>
+                        <input matInput type="text" placeholder="ingrese el nombre" id="name" formControlName="name">
+                              <mat-hint class="text-danger">
+                            {{ErrorRequiredMsg('name')}}
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="clas-form-field w-100" appearance="outline">
+                        <mat-label for="phone">Telefono: </mat-label>
+                        <input matInput type="text" placeholder="ingrese el telefono" id="phone" formControlName="phone">
+                              <mat-hint class="text-danger">
+                            {{ErrorRequiredMsg('phone')}}
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <mat-form-field class="clas-form-field w-100" appearance="outline">
+                    <mat-label for="address">Direccion: </mat-label>
+                    <textarea matInput id="address" formControlName="address"></textarea>
+                    <mat-hint class="text-danger">
+                        {{ErrorRequiredMsg('address')}}
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 d-flex btn-actions">
+                <button class="btn-add" type="submit" mat-button>
+                    Aceptar
+                </button>
+                <button class="btn-quit" type="button" mat-button (click)="cancel()">
+                    cancelar
+                </button>
+            </div>
+        </div>
+    </form>
+
+</app-card-template>
+<app-customer-account [customerAccounts]="accounts" [customerId]="+id!" [updateCustomerAccount]="updateData"></app-customer-account>

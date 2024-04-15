@@ -1,0 +1,53 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <span (click)="opened()" style="cursor: pointer;">
+        <img width="30" alt="Angular Logo" src="assets/images/hide.svg" />
+    </span>
+    <div class="d-flex align-items-center">
+        <img mat-card-avatar class="avatar" src="assets/images/user.png" alt="user">
+        <p class="username">{{username}}</p>
+    </div>
+</div>
+<aside class="sidebar" [ngClass]="{'sidebar-modified': isOpen}">
+    <nav>
+        <button routerLink="/bancus-app/home" routerLinkActive="active">
+            <span>
+                <img alt="Home" src="assets/images/home.svg" />
+                <span>Home</span>
+            </span>
+        </button>
+        <button routerLink="/bancus-app/customer" routerLinkActive="active">
+            <span>
+                <img alt="Angular Logo" src="assets/images/customer.svg" />
+                <span>Clientes</span>
+            </span>
+        </button>
+        <button>
+            <span>
+                <img alt="Angular Logo" src="assets/images/info.svg" />
+                <span>Acerca de</span>
+            </span>
+        </button>
+    </nav>
+
+</aside>
+<div style="margin-left: 55px;">
+    <div class="grid-container">
+        <mat-grid-list cols="{{( cards | async )![0].generalCols}}" rowHeight="8:2" [gutterSize]="'-20px'">
+            <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+                <mat-card class="dashboard-card justify-content-center">
+                    <mat-card-content class="dashboard-card-content">
+    
+                        <div *ngIf="card.title === 'Card 1'" class="bg-image status row">
+                            <app-publicity></app-publicity>
+                        </div>
+                        <div *ngIf="card.title === 'Card 2'" class="table-dash h-100">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+</div>

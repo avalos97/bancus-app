@@ -1,0 +1,33 @@
+button {
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+
+}
+
+.btn-add {
+    border: solid 1px #185A7D;
+    background: transparent;
+    width: 133px;
+    border-radius: 10px;
+    color: #185A7D;
+
+}
+
+.btn-quit {
+    border: none;
+    background: transparent;
+    color: #2C85BC;
+    width: 114px;
+    border-radius: 8px;
+    padding: 4px, 24px, 4px, 24px;
+}
+
+.btn-add,
+.btn-quit {
+    box-shadow: none;
+    height: 30px;
+}
