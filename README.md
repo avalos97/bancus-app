@@ -12,7 +12,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 Descripción de la estructura de directorios de alto nivel:
 
-/proyecto
+/bancus-app
 
 |-- /microservice-bank-api
 
@@ -49,7 +49,7 @@ Una vez que los servicios estén en ejecución, podrás acceder a ellos a travé
 - Frontend: http://localhost:4200
 - Backend (API): http://localhost:8080/microservice-bank-api/api/v1/
 
-###Detener los Servicios
+### Detener los Servicios
 Para detener los servicios y remover los contenedores, puedes usar el siguiente comando:
 
 `docker-compose down`
